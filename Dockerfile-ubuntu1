@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y docker.io
 
 # Installation des dépendances nécessaires
 RUN apt-get update && apt-get install -y strongswan && apt-get install -y vim
+RUN apt-get install -y iputils-ping
 
 # Copiez les fichiers de configuration Strongswan
 COPY strongswan.conf /etc/strongswan.conf
@@ -35,3 +36,5 @@ EXPOSE 4500/udp
 
 # Exécutez le service Strongswan et lancez les conteneurs CentOS au démarrage du conteneur
 CMD ["bash", "-c", "ipsec start --nofork "]
+
+#docker build -t ubuntu1-image -f Dockerfile-ubuntu1 .
